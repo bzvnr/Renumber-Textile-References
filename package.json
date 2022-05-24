@@ -1,7 +1,7 @@
 {
   "name": "textile-reference-sorter",
   "version": "0.11.1",
-  "description": "Function to sort numbered textile footnotes in order of appearance",
+  "description": "Function to sort numbered Textile footnotes in order of appearance",
   "main": "TODO",
   "scripts": {
     "test": "jest"
