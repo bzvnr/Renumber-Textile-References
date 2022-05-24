@@ -152,12 +152,12 @@ function errorCheck(text, ignoreConfirmCode) {
   }
   // Error: Citation without accompanying reference in text area. 
   if (uCitRefDiff.length > 0) {
-    return "ALERT: " + pluralizer("Citation", uCitRefDiff) + "unreferenced. Please ensure there are no citations without a reference.";
+    return "ALERT: " + "Citation" + pluralizer(uCitRefDiff) + "unreferenced. Please ensure there are no citations without a reference.";
   }
   // Confirm: Reference without accompanying citation in text area.
   if (ignoreConfirmCode != 1 && 
       numOfUniqueRefs - numOfUniqueCits >  0) {
-    return "CONFIRM" + pluralizer("Reference", uRefCitDiff) + "uncited. Do you still wish to proceed?";
+    return "CONFIRM" + "Reference" + pluralizer(uRefCitDiff) + "uncited. Do you still wish to proceed?";
   }
 
   return "PASS";
@@ -182,29 +182,29 @@ function replaceAndDeleteReference(text, oldCitationNumber) {
 // Replace old reference number with new reference number
 function getReferenceText(text, oldCitationNumber, orderedCitationNumber) {
   const startPosition = text.indexOf(`fn${oldCitationNumber}.`);
+  const positionAfterFN = startPosition + 2;
 
-  let nextLinePosition = text.indexOf("\n", startPosition + 2);
+  let nextLinePosition = text.indexOf("\n", positionAfterFN);
   // case for the last reference with no new line
   if (nextLinePosition == -1) {
     nextLinePosition = text.length;
   }
-  const positionAfterOldCitationNumber = startPosition + 2 + `${oldCitationNumber}`.length + 1;
-  const newReference = `fn${orderedCitationNumber}. ` +
-	  text.substring(positionAfterOldCitationNumber, nextLinePosition).trim();  
+  const positionAfterOldCitationNumber =  positionAfterFN + `${oldCitationNumber}`.length + 1;
+  const textAfterOldCitationNumber = text.substring(positionAfterOldCitationNumber, nextLinePosition).trim()
+  const newReference = `fn${orderedCitationNumber}. ` + textAfterOldCitationNumber;
   return newReference;
 }
 
-// TODO: remove string as parameter
-function pluralizer(string, array) {
+function pluralizer(array) {
   let plural = (array.length == 1) ? " " : "s ";
   let verb = (array.length == 1) ? " is " : " are ";
-  return string + plural + arrayToList(array) + verb;
+  return plural + arrayToList(array) + verb;
 }
 
 function arrayToList(array) {
   let newText;	  
   if (array.length === 0) {
-    newText = "[ERROR in arrayToList] "; // only devs should see this
+    newText = "[ERROR in arrayToList] "; // this should never occur
   } else if (array.length == 1) {
     newText = array[0];
   } else if (array.length == 2) {
