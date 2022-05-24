@@ -1,18 +1,19 @@
 // Textile Sort HTML page textarea interaction
 
 const citationSorter = require("./citationSort");
+const { terminatingSection, textareaName, buttonName } = require("./config");
 
 window.onload = function() {
-  let button = document.getElementById("sort-external-references-button");
+  let button = document.getElementById(buttonName);
 
   button.addEventListener("click", function() {
     interactWithText();
   });
 }
 
-// Manipulate DOM, insert into entry_body
+// Manipulate DOM, insert into textarea
 function interactWithText() {
-  let entryBody = document.getElementById("entry_body");
+  let entryBody = document.getElementById(textareaName);
   let text = entryBody.value;
   
   text = errorCheckWithPopups(text); 
@@ -21,13 +22,12 @@ function interactWithText() {
   }
   text = citationSorter.sortCitations(text)
 
-  const referenceHeader = "h2. External References";
-  const refHeaderPosition = text.indexOf(referenceHeader);
+  const refHeaderPosition = text.indexOf(terminatingSection);
     
   // Select all text and copypaste over it
   // Before copypasting, store cursor position
   // After copypasting, use stored values to reposition cursor
-  const newRefHeaderPosition = text.indexOf(referenceHeader);
+  const newRefHeaderPosition = text.indexOf(terminatingSection);
   const bodyTextChangeDifference = newRefHeaderPosition - refHeaderPosition;
   const originalStartPosition = entryBody.selectionStart + bodyTextChangeDifference;
   const originalEndPosition = entryBody.selectionEnd + bodyTextChangeDifference;

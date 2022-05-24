@@ -1,4 +1,4 @@
-const referenceHeader = "h2. External References";
+const { terminatingSection, terminatingSectionStart, terminatingSectionEnd } = require("./config");
 
 class Reference {
   constructor(orderedCitationNumber, referenceText) {
@@ -19,7 +19,7 @@ class Reference {
 /*
   Given a body of text, return the body with in-text citations
   numbered by order of appearance and the citations' corresponding references
-  inserted in correct order after the `External References` header.
+  inserted in correct order after the terminatingSection.
 */
 function sortCitations(text) {
   let refList = new Map(); // key-value -> oldCitationNumber:Reference
@@ -69,9 +69,21 @@ function sortCitations(text) {
   return text;
 }
 
+// Create new list of references 
+function recreateReferences(text, refList) {
+  text = text.substring(0, text.indexOf(terminatingSection));
+  text += `${terminatingSection}\n\n${terminatingSectionStart}\n\n`;
+
+  for (const value of refList.values()) {
+    text += `${value.referenceText}\n\n`; 
+  }
+  text += terminatingSectionEnd;
+  return text;
+}
+
 // A lookahead function to check text for errors
 function errorCheck(text, ignoreConfirmCode) {
-  const refHeaderPosition = text.indexOf(referenceHeader);
+  const terminatingSectionPosition = text.indexOf(terminatingSection);
   
   // Error: No text in text area.
   if (text.trim().length === 0) {
@@ -79,9 +91,9 @@ function errorCheck(text, ignoreConfirmCode) {
   }
 
   // Error: h2. External References" not in text or is not the last section in text area.
-  if (refHeaderPosition == -1 ||
-      refHeaderPosition < text.indexOf("h2.", refHeaderPosition + 2)) {
-      return "ALERT: " + `\"${referenceHeader}\" must be the last section in the text area.`;
+  if (terminatingSectionPosition == -1 ||
+      terminatingSectionPosition < text.indexOf("h2.", terminatingSectionPosition + 2)) {
+      return "ALERT: " + `\"${terminatingSection}\" must be the last section in the text area.`;
   }
 
   const potentialReferenceRegex = /(\bfn\d+)/g; // fn(number), including duplicates
@@ -118,10 +130,10 @@ function errorCheck(text, ignoreConfirmCode) {
     ex: fn9. Wikipedia - "Wikipediafn9.":...
   FIX?: Extract potential refs and compare to unique citations.
   // change this ignoreConfirmCode to 1 and increase subsequents confirms by one
-  if (text.indexOf(uniqueCitations[numOfUniqueCits - 1]) > refHeaderPosition) {
+  if (text.indexOf(uniqueInTextCitations[numOfUniqueCits - 1]) > terminatingSectionPosition) {
     if (!confirm(
         `There is text in citation format (i.e. [1], [2]) after the ` +
-        `reference heading \"${referenceHeader}\" in the text area. Do you ` +
+        `reference heading \"${terminatingSection}\" in the text area. Do you ` +
         `wish to proceed?`)
       ) {
         return false;
@@ -176,22 +188,9 @@ function getReferenceText(text, oldCitationNumber, orderedCitationNumber) {
     nextLinePosition = text.length;
   }
   const positionAfterOldCitationNumber = startPosition + 2 + `${oldCitationNumber}`.length + 1;
-  const newReference = 
-      `fn${orderedCitationNumber}. ` +
+  const newReference = `fn${orderedCitationNumber}. ` +
 	  text.substring(positionAfterOldCitationNumber, nextLinePosition).trim();  
   return newReference;
-}
-
-// Create new list of references 
-function recreateReferences(text, refList) {
-  text = text.substring(0, text.indexOf(referenceHeader));
-  text += `${referenceHeader}\n\n<div class="references">\n\n`;
-
-  for (let value of refList.values()) {
-    text += `${value.referenceText}\n\n`; 
-  }
-  text += "</div>";
-  return text;
 }
 
 // TODO: remove string as parameter
@@ -217,6 +216,6 @@ function arrayToList(array) {
 }
 
 module.exports = {
-  sortCitations: sortCitations,
+  sortCitations,
   errorCheck
 }
