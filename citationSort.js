@@ -90,7 +90,8 @@ function errorCheck(text, ignoreConfirmCode) {
     return "ALERT: " + "The text area must not be empty.";
   }
 
-  // Error: h2. External References" not in text or is not the last section in text area.
+  // TODO: keep or toss?
+  // Error: terminatingSection not in text or is not the last section in text area.
   if (terminatingSectionPosition == -1 ||
       terminatingSectionPosition < text.indexOf("h2.", terminatingSectionPosition + 2)) {
       return "ALERT: " + `\"${terminatingSection}\" must be the last section in the text area.`;
