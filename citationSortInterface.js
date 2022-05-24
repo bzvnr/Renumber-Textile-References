@@ -43,7 +43,7 @@ function interactWithText() {
 // Returns true if no errors are found, false otherwise
 function errorCheckWithPopups(text) {
   let errorCheckText = "";
-  let ignoreConfirmCode = 0;
+  let ignoreConfirmCode = 0; // used to bypass 'Confirms' in the errorCheck
   
   while (errorCheckText !== "PASS") {
     errorCheckText = citationSorter.errorCheck(text, ignoreConfirmCode);
