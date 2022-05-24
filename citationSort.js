@@ -1,4 +1,4 @@
-const { terminatingSection, terminatingSectionStart, terminatingSectionEnd } = require("./config");
+const { referenceSection, referenceSectionStart, referenceSectionEnd } = require("./config");
 
 class Reference {
   constructor(orderedCitationNumber, referenceText) {
@@ -19,7 +19,7 @@ class Reference {
 /*
   Given a body of text, return the body with in-text citations
   numbered by order of appearance and the citations' corresponding references
-  inserted in correct order after the terminatingSection.
+  inserted in correct order after the referenceSection.
 */
 function sortCitations(text) {
   let refList = new Map(); // key-value -> oldCitationNumber:Reference
@@ -71,19 +71,19 @@ function sortCitations(text) {
 
 // Create new list of references 
 function recreateReferences(text, refList) {
-  text = text.substring(0, text.indexOf(terminatingSection));
-  text += `${terminatingSection}\n\n${terminatingSectionStart}\n\n`;
+  text = text.substring(0, text.indexOf(referenceSection));
+  text += `${referenceSection}\n\n${referenceSectionStart}\n\n`;
 
   for (const value of refList.values()) {
     text += `${value.referenceText}\n\n`; 
   }
-  text += terminatingSectionEnd;
+  text += referenceSectionEnd;
   return text;
 }
 
 // A lookahead function to check text for errors
 function errorCheck(text, ignoreConfirmCode) {
-  const terminatingSectionPosition = text.indexOf(terminatingSection);
+  const referenceSectionPosition = text.indexOf(referenceSection);
   
   // Error: No text in text area.
   if (text.trim().length === 0) {
@@ -91,10 +91,10 @@ function errorCheck(text, ignoreConfirmCode) {
   }
 
   // TODO: keep or toss?
-  // Error: terminatingSection not in text or is not the last section in text area.
-  if (terminatingSectionPosition == -1 ||
-      terminatingSectionPosition < text.indexOf("h2.", terminatingSectionPosition + 2)) {
-      return "ALERT: " + `\"${terminatingSection}\" must be the last section in the text area.`;
+  // Error: referenceSection not in text or is not the last section in text area.
+  if (referenceSectionPosition == -1 ||
+      referenceSectionPosition < text.indexOf("h2.", referenceSectionPosition + 2)) {
+      return "ALERT: " + `\"${referenceSection}\" must be the last section in the text area.`;
   }
 
   const potentialReferenceRegex = /(\bfn\d+)/g; // fn(number), including duplicates
@@ -131,10 +131,10 @@ function errorCheck(text, ignoreConfirmCode) {
     ex: fn9. Wikipedia - "Wikipediafn9.":...
   FIX?: Extract potential refs and compare to unique citations.
   // change this ignoreConfirmCode to 1 and increase subsequents confirms by one
-  if (text.indexOf(uniqueInTextCitations[numOfUniqueCits - 1]) > terminatingSectionPosition) {
+  if (text.indexOf(uniqueInTextCitations[numOfUniqueCits - 1]) > referenceSectionPosition) {
     if (!confirm(
         `There is text in citation format (i.e. [1], [2]) after the ` +
-        `reference heading \"${terminatingSection}\" in the text area. Do you ` +
+        `reference heading \"${referenceSection}\" in the text area. Do you ` +
         `wish to proceed?`)
       ) {
         return false;

@@ -15,9 +15,9 @@ There is already solution in the Textile language that uses [auto-numbered](http
 
 This solution is currently configured as such:
 
-* `terminatingSection` - specified in config.js, a part of the text assumed to be the last [header](https://textile-lang.com/doc/headings) or a unique section in the text. The program places all references under the `terminatingSection`
+* `referenceSection` - specified in config.js, a part of the text assumed to be the last [header](https://textile-lang.com/doc/headings) or a unique section in the text. The program places all references under the `referenceSection`
 * it modifies the text in a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
-* the location of the references in the text does not matter. They can be placed anywhere, and the function will place them under the `terminatingSection`
+* the location of the references in the text does not matter. They can be placed anywhere, and the function will place them under the `referenceSection`
 
 ## Limitations
 

@@ -1,7 +1,7 @@
 // Textile Sort HTML page textarea interaction
 
 const citationSorter = require("./citationSort");
-const { terminatingSection, textareaName, buttonName } = require("./config");
+const { referenceSection, textareaName, buttonName } = require("./config");
 
 window.onload = function() {
   let button = document.getElementById(buttonName);
@@ -22,12 +22,12 @@ function interactWithText() {
   }
   text = citationSorter.sortCitations(text)
 
-  const refHeaderPosition = text.indexOf(terminatingSection);
+  const refHeaderPosition = text.indexOf(referenceSection);
     
   // Select all text and copypaste over it
   // Before copypasting, store cursor position
   // After copypasting, use stored values to reposition cursor
-  const newRefHeaderPosition = text.indexOf(terminatingSection);
+  const newRefHeaderPosition = text.indexOf(referenceSection);
   const bodyTextChangeDifference = newRefHeaderPosition - refHeaderPosition;
   const originalStartPosition = entryBody.selectionStart + bodyTextChangeDifference;
   const originalEndPosition = entryBody.selectionEnd + bodyTextChangeDifference;

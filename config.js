@@ -1,8 +1,8 @@
 // magic strings
 module.exports = { 
-  terminatingSection: 'h2. External References',
-  terminatingSectionStart: '<div class="references">',
-  terminatingSectionEnd: '</div>',
+  referenceSection: 'h2. External References',
+  referenceSectionStart: '<div class="references">',
+  referenceSectionEnd: '</div>',
   buttonName: 'sort-references-button',
   textareaName: 'entry_body'
 }
