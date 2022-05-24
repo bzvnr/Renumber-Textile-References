@@ -6,17 +6,18 @@ There is already solution in the Textile language that uses [auto-numbered](http
 
 ## Terminology
 
-| Appearance in text | Code | Textile
-| `[1]` | In-text citation | Reference
-| `fn1. Author - "Sample Text":https://www.example.com` | Reference | Footnote
+| Appearance in text | Textile | Code |
+|:------------------:| ------- | ---- |
+| [1] | Reference | In-text citation |
+| fn1. Author - "Sample Text":https://www.example.com | Footnote | Reference |
 
 ## Assumptions
 
 This solution is currently configured as such:
 
-- it modifies the text in a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
-- `terminating section` it expects there to be a [header](https://textile-lang.com/doc/headings) or unique text under which it will place all the references
-- it takes references from anywhere in the textarea and places them under the `terminating section`
+* `terminatingSection` - specified in config.js, a part of the text assumed to be the last [header](https://textile-lang.com/doc/headings) or a unique section in the text. The program places all references under the `terminatingSection`
+* it modifies the text in a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea)
+* the location of the references in the text does not matter. They can be placed anywhere, and the function will place them under the `terminatingSection`
 
 ## Limitations
 
