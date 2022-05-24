@@ -60,7 +60,7 @@
 
           </div>
       moreThan10:
-      # contains multi-digit citations
+      # contains multi-digit references
         input: |-
           h2. About 
 
