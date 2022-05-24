@@ -3,7 +3,7 @@
     standard:
       lessThan10:
         input: |-
-          h2. About
+          h2. Section
 
           Lorem.[2] ipsum.[1] dolor.[2] sit amet.[2]
 
@@ -17,7 +17,7 @@
 
           </div>
         expected: |-
-          h2. About
+          h2. Section
 
           Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1]
 
@@ -32,7 +32,7 @@
           </div>
       multiDigitCitation:
         input: |-
-          h2. About
+          h2. Section
 
           Lorem.[2] ipsum.[1000] dolor.[2] sit amet.[2]
 
@@ -46,7 +46,7 @@
 
           </div>
         expected: |-
-          h2. About
+          h2. Section
 
           Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1]
 
@@ -62,7 +62,7 @@
       moreThan10:
       # contains multi-digit references
         input: |-
-          h2. About 
+          h2. Section 
 
           Lorem.[2] ipsum.[1] dolor.[2] sit amet.[2] [7] consectetur adipiscing.[4]
 
@@ -98,7 +98,7 @@
 
           </div>
         expected: |-
-          h2. About 
+          h2. Section 
 
           Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1] [3] consectetur adipiscing.[4]
 
