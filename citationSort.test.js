@@ -7,7 +7,7 @@ const yaml = require("js-yaml");
 const filePath = path.resolve(__dirname, "testCases.yaml");
 const testCasesFile = fileSystem.readFileSync(filePath, "utf8");
 const testCases = yaml.load(testCasesFile);
-const standard = testCases.testCases.standard;
+const { standard } = testCases.testCases;
 
 function compareActualToExpected(testCase) {
   const { input, expected } = testCase;
