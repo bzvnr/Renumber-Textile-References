@@ -24,3 +24,13 @@ This project is currently configured as such:
 ## Limitations
 
 (Using Textile terminology): The function currently does not support [references that don't link to the footnote or footnotes with a backlink](https://textile-lang.com/doc/footnotes).
+
+## Instructions
+
+This project is built and tested using Node.js.
+
+Create bundle.js for index.html:
+
+```
+npm run build
+```
