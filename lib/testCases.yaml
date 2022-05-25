@@ -133,8 +133,8 @@ testCases:
         fn11. Eleventh Ref
 
         </div>
-    referenceBeforeEndSectionAfterCitation:
-      # note that it doesn't delete the whitespace left by the reference being in the text
+    referenceBeforeReferenceSectionAfterCitation:
+      # note that whitespace left by the reference being in the text isn't deleted yet
       input: |-
         h2. Section
 
@@ -165,7 +165,7 @@ testCases:
         fn2. Second Ref
 
         </div>
-    referenceBeforeEndSectionBeforeCitation:
+    referenceBeforeReferenceSectionBeforeCitation:
       input: |-
         h2. Section
 
