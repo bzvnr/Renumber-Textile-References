@@ -1,10 +1,11 @@
 {
   "name": "autonumber-textile-references",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "description": "Automatically renumber explicitly numbered Textile references in order of appearance",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack ./lib/renumberTextarea.js --output-filename=bundle.js --mode=production"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "homepage": "https://github.com/bzvnr/Textile-Reference-Sorter#readme",
   "devDependencies": {
     "jest": "^28.1.0",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
   },
   "dependencies": {
     "listify": "^1.0.3"
