@@ -1,9 +1,9 @@
 const config = require("./lib/config");
-const referenceSorter = require("./lib/referenceSorter");
-const referenceSorterInterface = require("./lib/referenceSorterInterface");
+const renumberReferences = require("./lib/renumberReferences");
+const renumberTextarea = require("./lib/renumberTextarea");
 
 modules.export = {
   config,
-  referenceSorter,
-  referenceSorterInterface
+  renumberReferences,
+  renumberTextarea
 };
