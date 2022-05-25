@@ -20,5 +20,8 @@
   "devDependencies": {
     "jest": "^28.1.0",
     "js-yaml": "^4.1.0"
+  },
+  "dependencies": {
+    "listify": "^1.0.3"
   }
 }
