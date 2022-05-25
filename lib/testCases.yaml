@@ -1,7 +1,7 @@
 ---
 testCases:
   standard:
-    lessThan10:
+    - testName: "lessThan10References"
       input: |-
         h2. Section
 
@@ -30,7 +30,7 @@ testCases:
         fn2. Second Ref
 
         </div>
-    multiDigitCitation:
+    - testName: "multiDigitCitation"
       input: |-
         h2. Section
 
@@ -59,7 +59,7 @@ testCases:
         fn2. Second Ref
 
         </div>
-    moreThan10:
+    - testName: "moreThan10References"
       # contains multi-digit references
       input: |-
         h2. Section 
@@ -133,7 +133,7 @@ testCases:
         fn11. Eleventh Ref
 
         </div>
-    referenceBeforeReferenceSectionAfterCitation:
+    - testName: "referenceBeforeReferenceSectionAfterCitation"
       # note that whitespace left by the reference being in the text isn't deleted yet
       input: |-
         h2. Section
@@ -165,7 +165,7 @@ testCases:
         fn2. Second Ref
 
         </div>
-    referenceBeforeReferenceSectionBeforeCitation:
+    - testName: "referenceBeforeReferenceSectionBeforeCitation"
       input: |-
         h2. Section
 
