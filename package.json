@@ -1,7 +1,7 @@
 {
-  "name": "textile-reference-sorter",
-  "version": "0.12.0",
-  "description": "Function to renumber Textile footnotes in order of appearance",
+  "name": "autonumber-textile-references",
+  "version": "0.12.1",
+  "description": "Automatically renumber explicitly numbered Textile references in order of appearance",
   "main": "index.js",
   "scripts": {
     "test": "jest"
