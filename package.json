@@ -1,6 +1,6 @@
 {
-  "name": "autonumber-textile-references",
-  "version": "0.13.1",
+  "name": "renumber-textile-references",
+  "version": "0.13.2",
   "description": "Automatically renumber explicitly numbered Textile references in order of appearance",
   "main": "index.js",
   "scripts": {
