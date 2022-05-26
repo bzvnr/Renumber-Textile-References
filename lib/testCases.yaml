@@ -133,6 +133,27 @@ testCases:
         fn11. Eleventh Ref
 
         </div>
+    - testName: "noDivSection"
+      input: |-
+        h2. Section
+
+        Lorem.[2]
+
+        h2. External References
+
+        fn2. First Ref
+      expected: |-
+        h2. Section
+
+        Lorem.[1]
+
+        h2. External References
+
+        <div class="references">
+
+        fn1. First Ref
+
+        </div>
     - testName: "referenceBeforeReferenceSectionAfterCitation"
       # note that whitespace left by the reference being in the text isn't deleted yet
       input: |-
