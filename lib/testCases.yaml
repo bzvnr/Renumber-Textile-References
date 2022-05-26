@@ -487,7 +487,6 @@ confirmTests:
         fn1. Second Ref
 
         </div>
-      expected: "ALERT: "
     - testName: "incorrectlyFormattedReferenceWithDuplicate"
       input: |-
         h2. Section
@@ -507,7 +506,6 @@ confirmTests:
         fn1. Second Ref
 
         </div>
-      expected: "ALERT: "
 alertTests:
   - testName: "noText"
     input: " \n\t\r"
