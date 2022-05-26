@@ -64,7 +64,7 @@ This assumes Node.js and npm are already installed.
 
 ## Limitations
 
-(Using Textile terminology): The function currently does not support [references that don't link to the footnote or footnotes with a backlink](https://textile-lang.com/doc/footnotes).
+(Using Textile terminology): The project currently does not support [references that don't link to the footnote or footnotes with a backlink](https://textile-lang.com/doc/footnotes).
 
 ### Bugs 
 
