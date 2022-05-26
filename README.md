@@ -48,7 +48,7 @@ This requires Node.js and npm to be installed on your system. See [installation 
 - Locate [lib/config.js](./lib.config.js) in the project folder
 - Open [config.js](./lib.config.js) and change the value corresponding to *referenceSection* to the desired value (i.e. referenceSection: "changeTheValueInQuotes"). Make sure to save
 - Open your system's terminal
-- Type in `cd [filePathToProjectFolder]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References`)
+- Type in `cd [filePathToProjectFolder]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`)
 - Once the terminal's directory has been changed to the project folder, enter `npm install`, then `npm run build`. The [bundle.js](./dist/bundle.js) file that `index.html` uses should be updated
 - Open `index.html` in any browser. The HTML page should update your references using the desired *referenceSection*
 
