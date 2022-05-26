@@ -21,6 +21,10 @@ This project uses different terminology than the Textile markup language, as see
 | [1] | Reference | In-text citation |
 | fn1. Author - "Sample Text":https://www.example.com | Footnote | Reference |
 
+## Use Instructions
+
+The script can be used without downloading via [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). See [Configuration](./#configuration) for customization details.
+
 ## Configuration
 
 This project is currently configured as such:
@@ -30,10 +34,6 @@ This project is currently configured as such:
 * all references are placed under the *referenceSection*, regardless of where they are located in the <textarea>
 
 The program can be used and customized offline by downloading it from GitHub.
-
-## Use Instructions
-
-The script can be used without downloading via [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). See [Configuration](./#configuration) for customization details.
 
 ### ReferenceSection Instructions
 
