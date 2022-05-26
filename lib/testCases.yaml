@@ -1,5 +1,5 @@
 ---
-testCases:
+renumberReferencesTests:
   standard:
     - testName: "lessThan10References"
       input: |-
@@ -217,3 +217,172 @@ testCases:
         fn2. Second Ref
 
         </div>
+checkFormatTests:
+  confirmTests:
+    continue:
+      - testName: "singleUncitedReference"
+        input: |-
+          h2. Section
+
+          First.[2] Second.[1]
+
+          h2. External References
+
+          <div class="references"> 
+
+          fn1. Second Ref
+
+          fn2. First Ref
+
+          fn4. Third Ref
+
+          </div>
+        expected: |-
+          h2. Section
+
+          First.[1] Second.[2]
+
+          h2. External References
+
+          <div class="references">
+
+          fn1. First Ref
+
+          fn2. Second Ref
+
+          fn3. Third Ref
+
+          </div>
+      - testName: "multipleUncitedReferences"
+        input: |-
+          h2. Section
+
+          First.[2] Second.[1] Third.[2] Fourth.[2]
+
+          h2. External References
+
+          <div class="references"> 
+
+          fn2. First Ref
+
+          fn9. Third Ref
+
+          fn1. Second Ref
+
+          fn8. Fourth Ref
+
+          fn10000. Fifth Ref
+
+          </div>
+        expected: |-
+          h2. Section
+
+          First.[1] Second.[2] Third.[1] Fourth.[1]
+
+          h2. External References
+
+          <div class="references">
+
+          fn1. First Ref
+
+          fn2. Second Ref
+
+          fn3. Third Ref
+
+          fn4. Fourth Ref
+
+          fn5. Fifth Ref
+
+          </div>
+      - testName: "incorrectlyFormattedReferenceWithNoCitation"
+        input: |-
+          h2. Section
+
+          First.[2]
+
+          h2. External References
+
+          <div class="references">
+
+          fn2. First Ref
+
+          fn1 Second Ref
+
+          </div>
+        expected: |-
+          h2. Section
+
+          First.[1]
+
+          h2. External References
+
+          <div class="references">
+
+          fn1. First Ref
+
+          </div>
+      - testName: "potentialReferenceMatchingAnExistingCitation"
+        input: |-
+          h2. Section
+
+          First.[2] Second.[1] fn1Third.[2]
+
+          h2. External References
+
+          <div class="references">
+
+          fn2. First Ref
+
+          fn1. Second Ref
+
+          </div>
+        expected: |-
+          h2. Section
+
+          First.[1] Second.[2] fn1Third.[1]
+
+          h2. External References
+
+          <div class="references">
+
+          fn1. First Ref
+
+          fn2. Second Ref
+
+          </div>
+    error:
+      - testName: "incorrectlyFormattedReferenceWithCorrespondingCitation"
+        input: |-
+          h2. Section 
+
+          First.[2] Second.[1]
+
+          h2. External References
+
+          <div class="references"> 
+
+          fn2 First Ref
+
+          fn1. Second Ref
+
+          </div>
+        expected: "ALERT: "
+  alertTests:
+    - name: "duplicateReferenceNumber"
+      input: |-
+        h2. Section
+
+        First.[2] Second.[1]
+
+        h2. External References
+
+        <div class="references">
+
+        fn1. First Ref
+
+        fn2. Second Ref
+
+        fn2. Third Ref
+
+        </div>
+      - name: 
