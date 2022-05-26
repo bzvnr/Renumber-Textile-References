@@ -217,7 +217,7 @@ normalTests:
       fn2. Second Ref
 
       </div>
-  - testName: "citationOnSameLineAsReferenceInReferenceSectionIgnored"
+  - testName: "referenceContainingCitationAfterReferenceSectionDoesNotChangeCitation"
     input: |-
       h2. Section
 
@@ -246,7 +246,37 @@ normalTests:
       fn2. Second Ref
 
       </div>
-  - testName: "referenceOnSameLineAsCitationBetweenTwoLinesContainingCitationsStaysTheSame"
+  - testName: "referenceContainingCitationWithUniqueNumberAfterReferenceSectionDoesNotChangeCitation"
+  # Failing actualOutput = expectedOutput, not triggering alert
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn2. First Ref [3]
+
+      fn1. Second Ref
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref [3]
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "referenceContainingCitationBetweenTwoLinesContainingCitationsStaysTheSame"
     input: |-
       h2. Section
 
@@ -281,7 +311,8 @@ normalTests:
       fn2. Second Ref
 
       </div>
-  - testName: "citationFollowingReferenceIsIgnored"
+  - testName: "referenceContainingCitationBeforeALineWithCitationIsIgnored"
+  # Failing actualOutput = expectedOutput
     input: |-
       h2. Section
 
@@ -310,7 +341,8 @@ normalTests:
       fn2. Second Ref
 
       </div>
-  - testName: "referencesOnTheSameLine"
+  - testName: "referencesOnSameLine"
+  # Failing actualOutput: expectedOutput
     input: |-
       h2. Section
 
@@ -614,6 +646,7 @@ alertTests:
 
       </div>
   - testName: "referenceFollowsCitationOnSameLine"
+  # Failing checkFormat detection
     input: |-
       h2. Section
 
