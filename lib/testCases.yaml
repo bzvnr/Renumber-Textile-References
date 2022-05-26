@@ -220,7 +220,7 @@ renumberReferencesTests:
 checkFormatTests:
   confirmTests:
     continue:
-      - testName: "singleUncitedReference"
+      - testName: "uncitedReference"
         input: |-
           h2. Section
 
@@ -253,7 +253,7 @@ checkFormatTests:
           fn3. Third Ref
 
           </div>
-      - testName: "multipleUncitedReferences"
+      - testName: "uncitedReferences"
         input: |-
           h2. Section
 
@@ -367,8 +367,91 @@ checkFormatTests:
 
           </div>
         expected: "ALERT: "
+      - testName: "incorrectlyFormattedReferenceWithDuplicate"
+        input: |-
+          h2. Section
+
+          First.[2] Second.[1]
+
+          h2. External References
+
+          <div class="references">
+
+          fn2. First Ref
+
+          fn3 Third Ref
+
+          fn1. Second Ref
+
+          fn1. Second Ref
+
+          </div>
+        expected: "ALERT: "
   alertTests:
-    - name: "duplicateReferenceNumber"
+    - testName: "noText"
+      input: " \n\t\r"
+    - testName: "referenceSectionIsNotTheLastSection"
+      input: |-
+        h2. Section
+
+        First.[2]
+
+        h2. External References
+
+        <div class="references">
+
+        fn2. First Ref
+
+        </div>
+
+        h2. Another Section
+    - testName: "noReferenceSection"
+      input: |-
+        h2. Section
+
+        First.[2]
+
+        <div class="references">
+
+        fn2. First Ref
+
+        </div>
+    - testName: "noCitations"
+      input: |-
+        h2. Section
+
+        First.
+
+        h2. External References
+
+        <div class="references">
+
+        fn2. First Ref
+
+        </div>
+    - testName: "noReferences"
+      input: |-
+        h2. Section
+
+        First.[2]
+
+        h2. External References
+
+        <div class="references">
+
+        </div>
+    - testName: "noReferencesOrCitations"
+      input: |-
+        h2. Section
+
+        First.
+
+        h2. External References
+
+        <div class="references">
+
+        </div>
+    - testName: "duplicateReference"
       input: |-
         h2. Section
 
@@ -385,4 +468,41 @@ checkFormatTests:
         fn2. Third Ref
 
         </div>
-      - name: 
+    - testName: "unreferencedCitation"
+      input: |-
+        h2. Section
+
+        First.[2] [3]
+
+        h2. External References
+
+        <div class="references">
+
+        fn2. First Ref
+
+        </div>
+    - testName: "unreferencedCitations"
+      input: |-
+        h2. Section
+
+        First.[2][3][4][5]
+
+        h2. External References
+
+        <div class="references">
+
+        fn2. First Ref
+
+        </div>
+  buggedTest:
+    - name: "incorrectlyFormattedReferenceWithNoOtherReferences"
+      input: |-
+        [1]
+
+        h2. External References
+
+        <div class="references">
+
+        fn1, First Ref " "
+
+        </div>
