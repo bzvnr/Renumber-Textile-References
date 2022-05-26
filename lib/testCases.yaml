@@ -1,7 +1,412 @@
 ---
-testCases:
-  standard:
-    - testName: "lessThan10References"
+normalTests:
+# test that shouldn't trigger any popups
+  - testName: "lessThan10References"
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1] dolor.[2] sit amet.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. Second Ref
+
+      fn2. First Ref
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "multiDigitCitation"
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1000] dolor.[2] sit amet.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1000. Second Ref
+
+      fn2. First Ref
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "moreThan10References"
+    # contains multi-digit references
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1] dolor.[2] sit amet.[2] [7] consectetur adipiscing.[4]
+
+      elit.[1][3][6]
+
+      Sed la[10]cus.[101][13][12][101][10000000000][10000000000]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. Second Ref
+
+      fn2. First Ref
+
+      fn6. Sixth Ref 
+
+      fn3. Fifth Ref
+
+      fn7. Third Ref 
+
+      fn4. Fourth Ref
+
+      fn101. Eighth Ref
+
+      fn10000000000. Eleventh Ref
+
+      fn10. Seventh Ref
+
+      fn12. Tenth Ref
+
+      fn13. Ninth Ref
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1] [3] consectetur adipiscing.[4]
+
+      elit.[2][5][6]
+
+      Sed la[7]cus.[8][9][10][8][11][11]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref
+
+      fn2. Second Ref
+
+      fn3. Third Ref
+
+      fn4. Fourth Ref
+
+      fn5. Fifth Ref
+
+      fn6. Sixth Ref
+
+      fn7. Seventh Ref
+
+      fn8. Eighth Ref
+
+      fn9. Ninth Ref
+
+      fn10. Tenth Ref
+
+      fn11. Eleventh Ref
+
+      </div>
+  - testName: "noDivSection"
+    input: |-
+      h2. Section
+
+      Lorem.[2]
+
+      h2. External References
+
+      fn2. First Ref
+    expected: |-
+      h2. Section
+
+      Lorem.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref
+
+      </div>
+  - testName: "referenceBeforeReferenceSectionAfterCitation"
+    # note that whitespace left by the reference being in the text isn't deleted yet
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1]
+
+      fn1. Second Ref
+
+      h2. External References
+
+      fn2. First Ref
+
+      <div class="references">
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2]
+
+
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "referenceBeforeReferenceSectionBeforeCitation"
+    input: |-
+      h2. Section
+
+      fn1. Second Ref
+
+      Lorem.[2] ipsum.[1]
+
+      h2. External References
+
+      fn2. First Ref
+
+      <div class="references">
+
+      </div>
+    expected: |-
+      h2. Section
+
+
+
+      Lorem.[1] ipsum.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "referenceContainingCitationAfterReferenceSectionDoesNotChangeCitation"
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn2. First Ref [1]
+
+      fn1. Second Ref
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref [1]
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "referenceContainingCitationWithUniqueNumberAfterReferenceSectionDoesNotChangeCitation"
+  # Failing actualOutput = expectedOutput, not triggering alert
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn2. First Ref [3]
+
+      fn1. Second Ref
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref [3]
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "referenceContainingCitationBetweenTwoLinesContainingCitationsStaysTheSame"
+    input: |-
+      h2. Section
+
+      Lorem.[2] 
+
+      fn2. First Ref [2]
+
+      ipsum.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. Second Ref
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] 
+
+
+
+      ipsum.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref [2]
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "referenceContainingCitationBeforeALineWithCitationIsIgnored"
+  # Failing actualOutput = expectedOutput
+    input: |-
+      h2. Section
+
+      fn2. First Ref [1]
+
+      Lorem.[2] ipsum.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. Second Ref
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref [1]
+
+      fn2. Second Ref
+
+      </div>
+  - testName: "referencesOnSameLine"
+  # Failing actualOutput: expectedOutput
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1] [3]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. Second Ref fn2. First Ref fn3. Third Ref.
+
+      </div>
+    expected: |-
+      h2. Section
+
+      Lorem.[1] ipsum.[2] [3]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref
+
+      fn2. Second Ref
+
+      fn3. Third Ref.
+
+      </div>
+confirmTests:
+  continue:
+    - testName: "uncitedReference"
+      input: |-
+        h2. Section
+
+        Lorem.[2] ipsum.[1]
+
+        h2. External References
+
+        <div class="references">
+
+        fn1. Second Ref
+
+        fn2. First Ref
+
+        fn4. Third Ref
+
+        </div>
+      expected: |-
+        h2. Section
+
+        Lorem.[1] ipsum.[2]
+
+        h2. External References
+
+        <div class="references">
+
+        fn1. First Ref
+
+        fn2. Second Ref
+
+        fn3. Third Ref
+
+        </div>
+    - testName: "uncitedReferences"
       input: |-
         h2. Section
 
@@ -9,102 +414,23 @@ testCases:
 
         h2. External References
 
-        <div class="references"> 
+        <div class="references">
+
+        fn2. First Ref
+
+        fn9. Third Ref
 
         fn1. Second Ref
 
-        fn2. First Ref
+        fn8. Fourth Ref
+
+        fn10000. Fifth Ref
 
         </div>
       expected: |-
         h2. Section
 
         Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1]
-
-        h2. External References
-
-        <div class="references">
-
-        fn1. First Ref
-
-        fn2. Second Ref
-
-        </div>
-    - testName: "multiDigitCitation"
-      input: |-
-        h2. Section
-
-        Lorem.[2] ipsum.[1000] dolor.[2] sit amet.[2]
-
-        h2. External References
-
-        <div class="references"> 
-
-        fn1000. Second Ref
-
-        fn2. First Ref
-
-        </div>
-      expected: |-
-        h2. Section
-
-        Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1]
-
-        h2. External References
-
-        <div class="references">
-
-        fn1. First Ref
-
-        fn2. Second Ref
-
-        </div>
-    - testName: "moreThan10References"
-      # contains multi-digit references
-      input: |-
-        h2. Section 
-
-        Lorem.[2] ipsum.[1] dolor.[2] sit amet.[2] [7] consectetur adipiscing.[4]
-
-        elit.[1][3][6]
-
-        Sed la[10]cus.[101][13][12][101][10000000000][10000000000]
-
-        h2. External References
-
-        <div class="references"> 
-
-        fn1. Second Ref
-
-        fn2. First Ref
-
-        fn6. Sixth Ref 
-
-        fn3. Fifth Ref
-
-        fn7. Third Ref 
-
-        fn4. Fourth Ref
-
-        fn101. Eighth Ref
-
-        fn10000000000. Eleventh Ref
-
-        fn10. Seventh Ref
-
-        fn12. Tenth Ref
-
-        fn13. Ninth Ref
-
-        </div>
-      expected: |-
-        h2. Section 
-
-        Lorem.[1] ipsum.[2] dolor.[1] sit amet.[1] [3] consectetur adipiscing.[4]
-
-        elit.[2][5][6]
-
-        Sed la[7]cus.[8][9][10][8][11][11]
 
         h2. External References
 
@@ -120,41 +446,53 @@ testCases:
 
         fn5. Fifth Ref
 
-        fn6. Sixth Ref
-
-        fn7. Seventh Ref
-
-        fn8. Eighth Ref
-
-        fn9. Ninth Ref
-
-        fn10. Tenth Ref
-
-        fn11. Eleventh Ref
-
         </div>
-    - testName: "referenceBeforeReferenceSectionAfterCitation"
-      # note that whitespace left by the reference being in the text isn't deleted yet
+    - testName: "incorrectlyFormattedReferenceWithNoCitation"
       input: |-
         h2. Section
 
-        Lorem.[2] ipsum.[1]
-
-        fn1. Second Ref
+        Lorem.[2]
 
         h2. External References
 
+        <div class="references">
+
         fn2. First Ref
 
-        <div class="references">
+        fn1 Second Ref
 
         </div>
       expected: |-
         h2. Section
 
-        Lorem.[1] ipsum.[2]
+        Lorem.[1]
 
+        h2. External References
 
+        <div class="references">
+
+        fn1. First Ref
+
+        </div>
+    - testName: "potentialReferenceMatchingAnExistingCitation"
+      input: |-
+        h2. Section
+
+        Lorem.[2] ipsum.[1] fn1dolor.[2]
+
+        h2. External References
+
+        <div class="references">
+
+        fn2. First Ref
+
+        fn1. Second Ref
+
+        </div>
+      expected: |-
+        h2. Section
+
+        Lorem.[1] ipsum.[2] fn1dolor.[1]
 
         h2. External References
 
@@ -165,34 +503,159 @@ testCases:
         fn2. Second Ref
 
         </div>
-    - testName: "referenceBeforeReferenceSectionBeforeCitation"
+  error:
+    - testName: "incorrectlyFormattedReferenceWithCorrespondingCitation"
       input: |-
         h2. Section
-
-        fn1. Second Ref
 
         Lorem.[2] ipsum.[1]
 
         h2. External References
 
-        fn2. First Ref
-
         <div class="references">
 
+        fn2 First Ref
+
+        fn1. Second Ref
+
         </div>
-      expected: |-
+    - testName: "incorrectlyFormattedReferenceWithDuplicate"
+      input: |-
         h2. Section
 
-
-
-        Lorem.[1] ipsum.[2]
+        Lorem.[2] ipsum.[1]
 
         h2. External References
 
         <div class="references">
 
-        fn1. First Ref
+        fn2. First Ref
 
-        fn2. Second Ref
+        fn3 Third Ref
+
+        fn1. Second Ref
+
+        fn1. Second Ref
 
         </div>
+alertTests:
+  - testName: "noText"
+    input: " \n\t\r"
+  - testName: "referenceSectionIsNotTheLastSection"
+    input: |-
+      h2. Section
+
+      Lorem.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      fn2. First Ref
+
+      </div>
+
+      h2. Another Section
+  - testName: "noReferenceSection"
+    input: |-
+      h2. Section
+
+      Lorem.[2]
+
+      <div class="references">
+
+      fn2. First Ref
+
+      </div>
+  - testName: "noCitations"
+    input: |-
+      h2. Section
+
+      Lorem.
+
+      h2. External References
+
+      <div class="references">
+
+      fn2. First Ref
+
+      </div>
+  - testName: "noReferences"
+    input: |-
+      h2. Section
+
+      Lorem.[2]
+
+      h2. External References
+
+      <div class="references">
+
+      </div>
+  - testName: "noReferencesOrCitations"
+    input: |-
+      h2. Section
+
+      Lorem.
+
+      h2. External References
+
+      <div class="references">
+
+      </div>
+  - testName: "duplicateReference"
+    input: |-
+      h2. Section
+
+      Lorem.[2] ipsum.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. First Ref
+
+      fn2. Second Ref
+
+      fn2. Third Ref
+
+      </div>
+  - testName: "unreferencedCitation"
+    input: |-
+      h2. Section
+
+      Lorem.[2] [3]
+
+      h2. External References
+
+      <div class="references">
+
+      fn2. First Ref
+
+      </div>
+  - testName: "unreferencedCitations"
+    input: |-
+      h2. Section
+
+      Lorem.[2][3][4][5]
+
+      h2. External References
+
+      <div class="references">
+
+      fn2. First Ref
+
+      </div>
+  - testName: "referenceFollowsCitationOnSameLine"
+  # Failing checkFormat detection
+    input: |-
+      h2. Section
+
+      Lorem.[2] fn2. First Ref [1] ipsum.[1]
+
+      h2. External References
+
+      <div class="references">
+
+      fn1. Second Ref
+
+      </div>
