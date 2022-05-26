@@ -6,6 +6,12 @@ Automatically renumber [explicitly numbered references in Textile](https://texti
 
 Textile already provides a solution for this problem by allowing users to use [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes) instead of [explicitly numbered references](https://textile-lang.com/doc/footnotes). This project is suited for Textile documents with explicitly numbered references or where auto-numbered notes are not supported.
 
+## Example 
+
+| Before | After |
+| ------ | ----- |
+| h2. Section<br><br>Lorem.[2] ipsum.[1]<br><br>h2. External References<br><br>fn2. First Ref<br><br>fn1. Second Ref | h2. Section<br><br>Lorem.[1] ipsum.[2]<br><br>h2. External References<br><br>fn1. First Ref<br><br>fn2. Second Ref |
+
 ## Terminology
 
 This project uses different terminology than the Textile markup language, as seen below.
@@ -70,13 +76,13 @@ To view inputs that currently cause errors, open  `lib/testCases.yaml` in the pr
 
 This project was built and tested using [Node.js and npm](https://nodejs.org/en/download/).
 
-#### Create bundle.js for index.html:
+Create bundle.js for index.html:
 
 ```
 npm run build
 ```
 
-#### Testing
+Run Tests using [Jest](https://jestjs.io/):
 
 ```
 npm test
