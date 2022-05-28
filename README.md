@@ -1,36 +1,123 @@
-# Autonumber-Textile-References
+<div align="center">
+  <a href="https://bzvnr.github.io/Renumber-Textile-References/">View in action with GitHub Pages</a>
+</div>
 
-Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text. This project solves a problem with the Textile markup language where altering the reference order or inserting a new reference in a body of text can result in the user having to renumber the references manually.
+<h1 align="center">Renumber-Textile-References</h1>
 
-Textile already provides a solution for this problem by allowing users to use [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes) instead of [explicitly numbered references](https://textile-lang.com/doc/footnotes). This project is suited for Textile documents with explicitly numbered references or where auto-numbered notes are not supported.
+Automatically renumber [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile markup language](https://en.wikipedia.org/wiki/Textile_(markup_language)) by order of their appearance in text.
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Example](#example)
+3. [Features](#features)
+4. [Rationale](#rationale)
+5. [Terminology](#terminology)
+6. [Use Instructions](#use-instructions)
+7. [Installation](#installation)
+8. [Configuration](#configuration)
+9. [Limitations](#limitations)
+10. [Technologies](#technologies)
+
+## Introduction
+
+This project is currently designed for a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here for a live webpage using the project's functions](https://bzvnr.github.io/Renumber-Textile-References/).
+
+## Example 
+
+| Before | After |
+| ------ | ----- |
+| h2. Section<br><br>Lorem.[2][3] ipsum.[1]<br><br>h2. External References<br><br>fn2. First Ref<br><br>fn1. Third Ref<br><br>fn3. Second Ref | h2. Section<br><br>Lorem.[1][2] ipsum.[3]<br><br>h2. External References<br><br>fn1. First Ref<br><br>fn2. Second Ref<br><br>fn3. Third Ref |
+
+## Features
+
+- Automatically renumber [explicitly numbered Textile references](https://textile-lang.com/doc/footnotes) by their order of appearance in text
+- User formatting errors are detected and highlighted to prevent incorrect usage
+- References can be placed almost anywhere in text (for limits, see [Limitations](#bugs))
+
+## Rationale
+
+This project solves a problem with [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile markup language](https://en.wikipedia.org/wiki/Textile_(markup_language)). When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project does that automatically.
+
+Note that Textile already provides a solution to this with [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes).
+
+This project is suited for: 
+
+- Anyone using Textile who has text already containing [explicitly numbered references](https://textile-lang.com/doc/footnotes)
+- Websites where auto-numbered notes are not supported
 
 ## Terminology
 
-This project uses different terminology than the Textile markup language, as seen below.
+This project was developed using different [terminology](https://textile-lang.com/doc/footnotes) than the Textile markup language, as seen below. This terminology may be subject to future change.
 
-| Appearance in text | Textile | Project |
-|:------------------:| ------- | ---- |
-| [1] | Reference | In-text citation |
-| fn1. Author - "Sample Text":https://www.example.com | Footnote | Reference |
+| Appearance in text | Project | Textile |
+|:------------------:|:-------:|:-------:|
+| [1] | In-text citation / Citation | Reference |
+| fn1. Author - "Sample Text":https://www.example.com | Reference | Footnote |
+
+## Use Instructions
+
+A live version of project can be used with [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). The project can also be used offline by downloading or cloning it from GitHub.
+
+### Requirements
+
+To use this project locally, Node.js and npm must be installed. See [installation instructions for Node.js for details](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). A short video on how to install Node.js can also be viewed [here](https://youtu.be/OBhw2BOez0w?t=82).
+
+## Installation
+
+This part assumes the [requirements](#requirements) have been fulfilled.
+
+1. Click the green `Code` button [on the project's GitHub repository page](https://github.com/bzvnr/Renumber-Textile-References) and download the project as a ZIP file
+2. Unzip the file
+3. [Open your system's terminal](https://web.archive.org/web/20220528160004/https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955?gi=f465d80a5ddf)
+4. In the terminal, navigate to the project's directory (folder). If you are unfamiliar with terminal navigation, enter `cd [filePathToProjectDirectory]` without the brackets in the terminal (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder
+5. In the terminal, enter `npm install` to download the npm packages required for the project
+
+The project's [HTML document](./index.html) opened in most browsers should work locally after these instructions.
 
 ## Configuration
 
-This project is currently configured as such:
+The project is configured by modifying the variable values in the [config.js](./lib/config.js) file. See [configuration instructions](#configuration-instructions) for more details. See [important details](#important-details) for a better understanding of how the program works.
 
-* `referenceSection` - specified in `config.js`, a part of the text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in the text. The program places all references under the `referenceSection` after it is finished renumbering
-* it was designed to serve a single [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on an HTML page
-* all references are placed under the `referenceSection`, regardless of where they are located in the <textarea>
+### Configuration Instructions
+
+This part assumes the project has been [downloaded](#installation) or cloned. To update [config.js](./lib/config.js), follow these instructions
+
+- Locate the [config.js](./lib/config.js) file on your system
+- Open [config.js](./lib/config.js) and update the variable values to the desired values (ex: referenceSection: "changeTheValueInQuotes")
+- Save [config.js](./lib/config.js) to preserve any changes made
+- See steps 3-5 from the [Installation](#installation) section for instructions on opening the system's terminal, navigating to the project directory, and downloading npm packages
+- In terminal, enter the command `npm run build` (if interested, see [npm commands](#npm-commands) for what this does)
+- Open `index.html` in a browser. The webpage should use the values in [config.js](./lib/config.js) when updating any provided text
+
+### Important Details
+
+- *referenceSection* - a variable in [config.js](./lib/config.js), it is assumed to be the last [heading](https://textile-lang.com/doc/headings) / a unique last section in a text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them
+  - As seen in the [example](#example), *referenceSection's* default value is `h2. External References`. This can be changed by following the [configuration instructions](#configuration-instructions)
+  - All references are placed under the *referenceSection*, regardless of where they are in the <textarea> (for limits see [limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference may be lost
 
 ## Limitations
 
-(Using Textile terminology): The function currently does not support [references that don't link to the footnote or footnotes with a backlink](https://textile-lang.com/doc/footnotes).
+(Using Textile terminology): The project currently does not support [references that don't link to the footnote or footnotes with a backlink](https://textile-lang.com/doc/footnotes).
 
-## Instructions
+Compatibility with Internet Explorer is untested.
 
-This project is built and tested using Node.js.
+### Bugs 
 
-Create bundle.js for index.html:
+To view inputs known to cause errors, open [testCases.yaml](./lib/testCases.yaml) and search for "Failing" without quotes.
 
-```
-npm run build
-```
+## Technologies
+
+Technologies used for this project include:
+
+- [Node.js](https://nodejs.org/en/download/) as a runtime environment
+- [npm](https://npmjs.com) for package management 
+- [Jest](https://jestjs.io/) for testing
+- [webpack](https://github.com/webpack/webpack) for bundling
+- [Visual Studio Code](https://code.visualstudio.com/) for development
+
+### npm Commands
+
+- `npm install` - install the required packages for the project
+- `npm run build` - updates [bundle.js](./dist/bundle.js) to use the latest versions of the [renumberReferences.js](./lib/renumberReferences.js), [renumberTextarea.js](./lib/renumberTextarea.js), and [config.js](./lib/config.js) files. [index.html](./index.html) will use the updated version of [bundle.js](./dist/bundle.js)
+- `npm test` - run the tests for the project with Jest

@@ -1,7 +1,15 @@
 {
-  "name": "autonumber-textile-references",
-  "version": "0.13.1",
+  "name": "renumber-textile-references",
+  "version": "0.13.2",
   "description": "Automatically renumber explicitly numbered Textile references in order of appearance",
+  "keywords": [
+    "textile",
+    "references",
+    "footnotes",
+    "citations",
+    "sort",
+    "renumber"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -9,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bzvnr/Textile-Reference-Sorter.git"
+    "url": "git+https://github.com/bzvnr/Renumber-Textile-References.git"
   },
   "author": "bzvnr",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bzvnr/Textile-Reference-Sorterissues"
+    "url": "https://github.com/bzvnr/Renumber-Textile-References#issues"
   },
-  "private": true,
-  "homepage": "https://github.com/bzvnr/Textile-Reference-Sorter#readme",
+  "private": false,
+  "homepage": "https://github.com/bzvnr/Renumber-Textile-References#readme",
   "devDependencies": {
     "jest": "^28.1.0",
     "js-yaml": "^4.1.0",
