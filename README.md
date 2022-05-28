@@ -1,4 +1,4 @@
-<h1 align="center"> Renumber-Textile-References </h1>
+<h1 align="center">Renumber-Textile-References</h1>
 
 <div align="center">
   <a href="https://bzvnr.github.io/Renumber-Textile-References/">View in action with GitHub Pages</a>
@@ -8,7 +8,7 @@
 
 Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text.
 
-This project is currently designed to target a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to view the program in action on a webpage](https://bzvnr.github.io/Renumber-Textile-References/).
+This project is currently designed to target a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to use the project on a provided webpage](https://bzvnr.github.io/Renumber-Textile-References/).
 
 ## Rationale
 
@@ -23,9 +23,9 @@ This project is suited for:
 
 ## Features
 
-- Automatically renumber explicitly numbered references by their order of appearance in text
-- Error detection that highlights user formatting errors to prevent incorrect usage
-- References can be placed almost anywhere in text and be placed in the [ReferenceSection]("./configuration") (for limits, see [Limitations](./#limitations))
+- Automatically renumber explicitly numbered Textile references by their order of appearance in text
+- User formatting errors are detected and highlighted to prevent incorrect usage
+- References can be placed almost anywhere in text and be placed in the [ReferenceSection]("./configuration") (for limits, see [Limitations](./#bugs))
 
 ## Example 
 
@@ -35,7 +35,7 @@ This project is suited for:
 
 ## Terminology
 
-This project uses different [terminology](https://textile-lang.com/doc/footnotes) than the Textile markup language, as seen below. The terminology used in this project may be subject to future change.
+This project uses different [terminology](https://textile-lang.com/doc/footnotes) than the Textile markup language, as seen below. This terminology may be subject to future change.
 
 ### Project vs. Textile
 
@@ -46,13 +46,15 @@ This project uses different [terminology](https://textile-lang.com/doc/footnotes
 
 ### Project-Specific
 
-- *referenceSection* - specified in [config.js](./lib/config.js), a part of the text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in the text. The program places all references under the *referenceSection* after it is finished renumbering them. As seen in [the example], *referenceSection's* default value is `h2. External References`, but this can be changed by following the [ReferenceSection Instructions](./#referencesection-instructions). All references are placed under the *referenceSection*, regardless of where they are located in the <textarea>. Note that with the current implementation, any text after the *referenceSection* will be lost.
-- [config.js](./lib/config.js) - a file used to customize the program to the user's needs
+- *referenceSection* - specified in [config.js](./lib/config.js), a part of the text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in the text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them. 
+  - As seen in [the example](./#example), *referenceSection's* default value is `h2. External References`. This an be changed by following the [Configuration Instructions](./#configuration)
+  - All references are placed under the *referenceSection*, regardless of where they are located in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* will be lost.
+- [config.js](./lib/config.js) - a configuration file used to customize the program to the user's needs
 
 
 ## Use Instructions
 
-A live version of program can be accessed with [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). The program can also be used offline by downloading it or cloning it from GitHub.
+A live version of program can be used with [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). The project can also be used offline by downloading it or cloning it from GitHub.
 
 ### Requirements
 
@@ -60,15 +62,15 @@ To use this project locally, Node.js and npm must be installed on your system. S
 
 ### Installation
 
-- Download the project from this page by clicking the green `Code` button and downloading the project as a ZIP file
+- Clicking the green `Code` button [on the project's GitHub repository}(https://github.com/bzvnr/Renumber-Textile-References) and download the project as a ZIP file
 - Unzip the file (AKA Extract all)
 
 ### Configuration
 
-This part assumes you [downloaded](#installation) or cloned the project. To update [config.js](./lib/config.js), follow these instructions:
+This part assumes you [downloaded](./#installation) or cloned the project. To update [config.js](./lib/config.js), follow these instructions:
 
 - Locate the [config.js](./lib/config.js)
-- Open [config.js](./lib/config.js) and update the values of variables to the desired values (ex: referenceSection: "changeTheValueInQuotes"). Save any changes made
+- Open [config.js](./lib/config.js) and update the values of variables to the desired values (ex: referenceSection: "changeTheValueInQuotes") Save the file to preserve any changes made
 - [Open your system's terminal](https://web.archive.org/web/20220528160004/https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955?gi=f465d80a5ddf)
 - In the terminal, navigate to the project's directory (folder)
 - <details>
@@ -76,8 +78,8 @@ This part assumes you [downloaded](#installation) or cloned the project. To upda
   In the terminal, enter `cd [filePathToProjectDirectory]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder.
 </details>
 - If npm packages have not been installed yet, enter `npm install` in the terminal
-- In terminal, enter the command `npm run build`. This updates the [bundle.js](./dist/bundle.js) file, allowing [webpage](./index.html) to use the updated values. 
-- Open `index.html` in any browser. The webpage should update your references using the desired *referenceSection*
+- In terminal, enter the command `npm run build`. This updates the [bundle.js](./dist/bundle.js) file, allowing [webpage](./index.html) to use the updated values
+- Open `index.html` in any browser. The webpage should use the provided values in [./lib/config.js] with the [system](./lib/renumberReferences.js) [files](./lib/renumberTextarea.js) to update any provided text
 
 ## Limitations
 
@@ -87,18 +89,13 @@ This part assumes you [downloaded](#installation) or cloned the project. To upda
 
 To view inputs that currently cause errors, open [testCases](./lib/testCases.yaml) in the project and search for "Failing".
 
-## Development Instructions
+## Development
 
 This project was built using [Node.js and npm](https://nodejs.org/en/download/), tested using [Jest](https://jestjs.io/), bundled with [webpack](https://github.com/webpack/webpack), and created with [Visual Studio Code](https://code.visualstudio.com/).
 
-To create [bundle.js](./dist/bundle.js) for [index.html](./index.html):
 
-```
-npm run build
-```
+### npm Commands
 
-Run Tests:
-
-```
-npm test
-```
+- `npm install` - install the required packages for the project
+- `npm run build` - create [bundle.js](./dist/bundle.js) for [index.html](./index.html) to use
+- `npm test` - run the tests for the project with Jest
