@@ -46,21 +46,21 @@ This project is suited for:
 
 ## Terminology
 
-This project uses different [terminology](https://textile-lang.com/doc/footnotes) than the Textile markup language, as seen below. This terminology may be subject to future change.
+This project was developed using different [terminology](https://textile-lang.com/doc/footnotes) than the Textile markup language, as seen below. This terminology may be subject to future change.
 
 ### Project vs. Textile
 
 | Appearance in text | Project | Textile |
 |:------------------:| ------- | ------- |
-| [1] | In-text citation | Reference |
+| [1] | In-text citation / Citation | Reference |
 | fn1. Author - "Sample Text":https://www.example.com | Reference | Footnote |
 
 ### Project-Specific
 
-- *referenceSection* - specified in [config.js](./lib/config.js), a part of the text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in the text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them. 
-  - As seen in [the example](#example), *referenceSection's* default value is `h2. External References`. This an be changed by following the [Configuration Instructions](#configuration)
-  - All references are placed under the *referenceSection*, regardless of where they are located in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* will be lost.
-- [config.js](./lib/config.js) - a configuration file used to customize the program to the user's needs
+- [config.js](./lib/config.js) - a configuration file used to customize the project to the user's needs
+- *referenceSection* - specified in [config.js](./lib/config.js), a part of a text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in a text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them
+  - As seen in the [example](#example), *referenceSection's* default value is `h2. External References`. This an be changed by following the [Configuration Instructions](#configuration)
+  - All references are placed under the *referenceSection*, regardless of where they are located in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference will be lost
 
 
 ## Use Instructions
@@ -69,28 +69,30 @@ A live version of program can be used with [GitHub Pages](https://bzvnr.github.i
 
 ### Requirements
 
-To use this project locally, Node.js and npm must be installed on your system. See [installation instructions for Node.js details](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). A short video on how to install can also be viewed [here](https://youtu.be/OBhw2BOez0w?t=82).
+To use this project locally, Node.js and npm must be installed. See [installation instructions for Node.js for details](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). A short video on how to install can also be viewed [here](https://youtu.be/OBhw2BOez0w?t=82).
 
 ### Installation
 
-- Clicking the green `Code` button [on the project's GitHub repository}(https://github.com/bzvnr/Renumber-Textile-References) and download the project as a ZIP file
-- Unzip the file (AKA Extract all)
-
-### Configuration
-
-This part the project has been [downloaded](#installation) or cloned. Configuration is done by modifying the variable values in the [config.js](./lib/config.js) file. To update [config.js](./lib/config.js), follow these instructions:
-
-- Locate the [config.js](./lib/config.js)
-- Open [config.js](./lib/config.js) and update the values of variables to the desired values (ex: referenceSection: "changeTheValueInQuotes") Save the file to preserve any changes made
-- [Open your system's terminal](https://web.archive.org/web/20220528160004/https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955?gi=f465d80a5ddf)
-- In the terminal, navigate to the project's directory (folder)
-- <details>
+1. Click the green `Code` button [on the project's GitHub repository](https://github.com/bzvnr/Renumber-Textile-References) and download the project as a ZIP file
+2. Unzip the file (AKA Extract all)
+3. [Open your system's terminal](https://web.archive.org/web/20220528160004/https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955?gi=f465d80a5ddf)
+4. In the terminal, navigate to the project's directory (folder)
+<details>
   <summary>Click here if unfamiliar with terminal navigation</summary>
   In the terminal, enter `cd [filePathToProjectDirectory]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder.
 </details>
-- If npm packages have not been installed yet, enter `npm install` in the terminal
-- In terminal, enter the command `npm run build`. This updates the [bundle.js](./dist/bundle.js) file, allowing [webpage](./index.html) to use the updated values
-- Open `index.html` in any browser. The webpage should use the provided values in [./lib/config.js] with the [system](./lib/renumberReferences.js) [files](./lib/renumberTextarea.js) to update any provided text
+5. In the terminal, enter `npm install` to download the npm packages required for the project
+
+### Configuration
+
+This part assumes the project has been [downloaded](#installation) or cloned. The project is configured by modifying the variable values in the [config.js](./lib/config.js) file. To update [config.js](./lib/config.js), follow these instructions:
+
+- Locate the [config.js](./lib/config.js) file on your system
+- Open [config.js](./lib/config.js) and update the variable values to the desired values (ex: referenceSection: "changeTheValueInQuotes").
+- Save [config.js](./lib/config.js) to preserve any changes made
+- See steps 3-5 from the [Installation](#installation) section for instructions on opening the system's terminal, navigating to the project directory, and downloading npm packages
+- In terminal, enter the command `npm run build`. This updates the [bundle.js](./dist/bundle.js) file, allowing the [webpage](./index.html) to use the updated values from [config.js](./lib/config.js)
+- Open `index.html` in any browser. The webpage should use the provided values in [config.js](./lib/config.js) with the [system](./lib/renumberReferences.js) [files](./lib/renumberTextarea.js) to update any provided text
 
 ## Limitations
 
@@ -98,7 +100,7 @@ This part the project has been [downloaded](#installation) or cloned. Configurat
 
 ### Bugs 
 
-To view inputs that currently cause errors, open [testCases](./lib/testCases.yaml) in the project and search for "Failing".
+To view inputs that currently cause errors, open [testCases.yaml](./lib/testCases.yaml) and search for "Failing" without quotes.
 
 ## Technologies
 
