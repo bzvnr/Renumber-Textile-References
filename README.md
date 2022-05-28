@@ -1,6 +1,8 @@
-# Renumber-Textile-References
+<h1 align="center"> Renumber-Textile-References </h1>
 
-[Use with GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/)
+<div align="center">
+  <a href="https://bzvnr.github.io/Renumber-Textile-References/">View in action with GitHub Pages</a>
+</div
 
 Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text. This project solves a problem with the Textile markup language where altering the reference order or inserting a new reference in a body of text can result in the user having to renumber the references manually.
 
