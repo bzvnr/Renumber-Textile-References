@@ -9,9 +9,9 @@ Automatically renumber [explicitly numbered references in Textile](https://texti
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Rationale](#rationale)
+2. [Example](#example)
 3. [Features](#features)
-4. [Example](#example)
+4. [Rationale](#rationale)
 5. [Terminology](#terminology)
 6. [Use Instructions](#use-instructions)
 7. [Limitations](#limitations)
@@ -19,30 +19,30 @@ Automatically renumber [explicitly numbered references in Textile](https://texti
 
 ## Introduction
 
-This project is currently designed to target a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to use the project on a provided webpage](https://bzvnr.github.io/Renumber-Textile-References/).
-
-## Rationale
-
-This project solves a problem with explicitly numbered references in the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)) markup language. When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project solves that problem by doing that automatically.
-
-Note that Textile already provides [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes) as an alternative solution.
-
-This project is suited for: 
-
-- Anyone using Textile who has text already containing explicitly numbered references
-- Websites where auto-numbered notes are not supported
-
-## Features
-
-- Automatically renumber explicitly numbered Textile references by their order of appearance in text
-- User formatting errors are detected and highlighted to prevent incorrect usage
-- References can be placed almost anywhere in text and be placed in the [ReferenceSection]("./configuration") (for limits, see [Limitations](#bugs))
+This project is currently designed for a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to use the project on a provided webpage](https://bzvnr.github.io/Renumber-Textile-References/).
 
 ## Example 
 
 | Before | After |
 | ------ | ----- |
 | h2. Section<br><br>Lorem.[2][3] ipsum.[1]<br><br>h2. External References<br><br>fn2. First Ref<br><br>fn1. Third Ref<br><br>fn3. Second Ref | h2. Section<br><br>Lorem.[1][2] ipsum.[3]<br><br>h2. External References<br><br>fn1. First Ref<br><br>fn2. Second Ref<br><br>fn3. Third Ref |
+
+## Features
+
+- Automatically renumber explicitly numbered Textile references by their order of appearance in text
+- User formatting errors are detected and highlighted to prevent incorrect usage
+- References can be placed almost anywhere in text (for limits, see [Limitations](#bugs))
+
+## Rationale
+
+This project solves a problem with [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)) markup language. When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project does that automatically.
+
+Note that Textile already provides a solution with [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes).
+
+This project is suited for: 
+
+- Anyone using Textile who has text already containing explicitly numbered references
+- Websites where auto-numbered notes are not supported
 
 ## Terminology
 
