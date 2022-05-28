@@ -60,12 +60,12 @@ This project was developed using different [terminology](https://textile-lang.co
 - [config.js](./lib/config.js) - a configuration file used to customize the project to the user's needs
 - *referenceSection* - specified in [config.js](./lib/config.js), a part of a text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in a text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them
   - As seen in the [example](#example), *referenceSection's* default value is `h2. External References`. This an be changed by following the [Configuration Instructions](#configuration)
-  - All references are placed under the *referenceSection*, regardless of where they are located in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference will be lost
+  - All references are placed under the *referenceSection*, regardless of where they are in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference will be lost
 
 
 ## Use Instructions
 
-A live version of program can be used with [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). The project can also be used offline by downloading it or cloning it from GitHub.
+A live version of project can be used with [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). The project can also be used offline by downloading it or cloning it from GitHub.
 
 ### Requirements
 
@@ -77,11 +77,10 @@ To use this project locally, Node.js and npm must be installed. See [installatio
 2. Unzip the file (AKA Extract all)
 3. [Open your system's terminal](https://web.archive.org/web/20220528160004/https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955?gi=f465d80a5ddf)
 4. In the terminal, navigate to the project's directory (folder)
-<details>
-  <summary>Click here if unfamiliar with terminal navigation</summary>
-  In the terminal, enter `cd [filePathToProjectDirectory]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder.
-</details>
-5. In the terminal, enter `npm install` to download the npm packages required for the project
+5. In the terminal, enter `cd [filePathToProjectDirectory]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder.
+6. In the terminal, enter `npm install` to download the npm packages required for the project
+
+The [webpage](./index.html) for the project should work locally.
 
 ### Configuration
 
@@ -90,7 +89,7 @@ This part assumes the project has been [downloaded](#installation) or cloned. Th
 - Locate the [config.js](./lib/config.js) file on your system
 - Open [config.js](./lib/config.js) and update the variable values to the desired values (ex: referenceSection: "changeTheValueInQuotes").
 - Save [config.js](./lib/config.js) to preserve any changes made
-- See steps 3-5 from the [Installation](#installation) section for instructions on opening the system's terminal, navigating to the project directory, and downloading npm packages
+- See steps 3-6 from the [Installation](#installation) section for instructions on opening the system's terminal, navigating to the project directory, and downloading npm packages
 - In terminal, enter the command `npm run build`. This updates the [bundle.js](./dist/bundle.js) file, allowing the [webpage](./index.html) to use the updated values from [config.js](./lib/config.js)
 - Open `index.html` in any browser. The webpage should use the provided values in [config.js](./lib/config.js) with the [system](./lib/renumberReferences.js) [files](./lib/renumberTextarea.js) to update any provided text
 
