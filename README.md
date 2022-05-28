@@ -102,8 +102,10 @@ To view inputs that currently cause errors, open [testCases](./lib/testCases.yam
 
 ## Technologies
 
-This project was built using [Node.js and npm](https://nodejs.org/en/download/), tested using [Jest](https://jestjs.io/), bundled with [webpack](https://github.com/webpack/webpack), and created with [Visual Studio Code](https://code.visualstudio.com/).
-
+- [Node.js and npm](https://nodejs.org/en/download/) for development and package management
+- [Jest](https://jestjs.io/) for testing
+- [webpack](https://github.com/webpack/webpack) for bundling
+- [Visual Studio Code](https://code.visualstudio.com/) for creation and editing
 
 ### npm Commands
 
