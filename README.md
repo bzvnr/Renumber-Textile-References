@@ -36,7 +36,7 @@ This project is suited for:
 
 - Automatically renumber explicitly numbered Textile references by their order of appearance in text
 - User formatting errors are detected and highlighted to prevent incorrect usage
-- References can be placed almost anywhere in text and be placed in the [ReferenceSection]("./configuration") (for limits, see [Limitations](./#bugs))
+- References can be placed almost anywhere in text and be placed in the [ReferenceSection]("./configuration") (for limits, see [Limitations](#bugs))
 
 ## Example 
 
@@ -58,7 +58,7 @@ This project uses different [terminology](https://textile-lang.com/doc/footnotes
 ### Project-Specific
 
 - *referenceSection* - specified in [config.js](./lib/config.js), a part of the text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in the text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them. 
-  - As seen in [the example](./#example), *referenceSection's* default value is `h2. External References`. This an be changed by following the [Configuration Instructions](./#configuration)
+  - As seen in [the example](#example), *referenceSection's* default value is `h2. External References`. This an be changed by following the [Configuration Instructions](#configuration)
   - All references are placed under the *referenceSection*, regardless of where they are located in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* will be lost.
 - [config.js](./lib/config.js) - a configuration file used to customize the program to the user's needs
 
@@ -78,7 +78,7 @@ To use this project locally, Node.js and npm must be installed on your system. S
 
 ### Configuration
 
-This part assumes you [downloaded](./#installation) or cloned the project. To update [config.js](./lib/config.js), follow these instructions:
+This part the project has been [downloaded](#installation) or cloned. Configuration is done by modifying the variable values in the [config.js](./lib/config.js) file. To update [config.js](./lib/config.js), follow these instructions:
 
 - Locate the [config.js](./lib/config.js)
 - Open [config.js](./lib/config.js) and update the values of variables to the desired values (ex: referenceSection: "changeTheValueInQuotes") Save the file to preserve any changes made
