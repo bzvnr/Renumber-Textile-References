@@ -1,6 +1,6 @@
 ---
 normalTests:
-# test that shouldn't trigger any popups
+# tests that shouldn't trigger any popups
   - testName: "lessThan10References"
     input: |-
       h2. Section
@@ -372,6 +372,7 @@ normalTests:
 
       </div>
 confirmTests:
+# tests that should trigger the "CONFIRM" popup
   continue:
     - testName: "uncitedReference"
       input: |-
@@ -539,6 +540,7 @@ confirmTests:
 
         </div>
 alertTests:
+# tests that should trigger the "ALERT" popup
   - testName: "noText"
     input: " \n\t\r"
   - testName: "referenceSectionIsNotTheLastSection"
