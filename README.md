@@ -31,13 +31,13 @@ This project is currently designed for a [<textarea>](https://developer.mozilla.
 
 ## Features
 
-- Automatically renumber [explicitly numbered](https://textile-lang.com/doc/footnotes) Textile references by their order of appearance in text
+- Automatically renumber [explicitly numbered Textile references](https://textile-lang.com/doc/footnotes) by their order of appearance in text
 - User formatting errors are detected and highlighted to prevent incorrect usage
 - References can be placed almost anywhere in text (for limits, see [Limitations](#bugs))
 
 ## Rationale
 
-This project solves a problem with [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)). When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project does that automatically.
+This project solves a problem with [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile markup language](https://en.wikipedia.org/wiki/Textile_(markup_language)). When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project does that automatically.
 
 Note that Textile already provides a solution to this with [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes).
 
@@ -49,8 +49,6 @@ This project is suited for:
 ## Terminology
 
 This project was developed using different [terminology](https://textile-lang.com/doc/footnotes) than the Textile markup language, as seen below. This terminology may be subject to future change.
-
-### Project vs. Textile
 
 | Appearance in text | Project | Textile |
 |:------------------:|:-------:|:-------:|
@@ -69,10 +67,10 @@ To use this project locally, Node.js and npm must be installed. See [installatio
 
 This part assumes the [requirements](#requirements) have been fulfilled.
 
-1. Click the green `Code` button [on the project's GitHub repository](https://github.com/bzvnr/Renumber-Textile-References) and download the project as a ZIP file
+1. Click the green `Code` button [on the project's GitHub repository page](https://github.com/bzvnr/Renumber-Textile-References) and download the project as a ZIP file
 2. Unzip the file
 3. [Open your system's terminal](https://web.archive.org/web/20220528160004/https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955?gi=f465d80a5ddf)
-4. In the terminal, navigate to the project's directory (folder). [If you are unfamiliar with terminal navigation, simply enter `cd [filePathToProjectDirectory]` without the brackets in the terminal (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder.]
+4. In the terminal, navigate to the project's directory (folder). If you are unfamiliar with terminal navigation, enter `cd [filePathToProjectDirectory]` without the brackets in the terminal (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder
 5. In the terminal, enter `npm install` to download the npm packages required for the project
 
 The project's [HTML document](./index.html) opened in most browsers should work locally after these instructions.
@@ -89,14 +87,14 @@ This part assumes the project has been [downloaded](#installation) or cloned. To
 - Open [config.js](./lib/config.js) and update the variable values to the desired values (ex: referenceSection: "changeTheValueInQuotes")
 - Save [config.js](./lib/config.js) to preserve any changes made
 - See steps 3-5 from the [Installation](#installation) section for instructions on opening the system's terminal, navigating to the project directory, and downloading npm packages
-- In terminal, enter the command `npm run build` (if interested, see [npm commands](#npm-commands) for how this works)
-- Open `index.html` in any browser. The webpage should use the provided values in [config.js](./lib/config.js) with the project files to update any provided text
+- In terminal, enter the command `npm run build` (if interested, see [npm commands](#npm-commands) for what this does)
+- Open `index.html` in a browser. The webpage should use the values in [config.js](./lib/config.js) when updating any provided text
 
 ### Important Details
 
-- *referenceSection* - a variable in [config.js](./lib/config.js), a part of a text assumed to be the last [heading](https://textile-lang.com/doc/headings) / a unique last section in a text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them
+- *referenceSection* - a variable in [config.js](./lib/config.js), it is assumed to be the last [heading](https://textile-lang.com/doc/headings) / a unique last section in a text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them
   - As seen in the [example](#example), *referenceSection's* default value is `h2. External References`. This can be changed by following the [configuration instructions](#configuration-instructions)
-  - All references are placed under the *referenceSection*, regardless of where they are in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference may be lost
+  - All references are placed under the *referenceSection*, regardless of where they are in the <textarea> (for limits see [limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference may be lost
 
 ## Limitations
 
@@ -116,10 +114,10 @@ Technologies used for this project include:
 - [npm](https://npmjs.com) for package management 
 - [Jest](https://jestjs.io/) for testing
 - [webpack](https://github.com/webpack/webpack) for bundling
-- [Visual Studio Code](https://code.visualstudio.com/) for creation and editing
+- [Visual Studio Code](https://code.visualstudio.com/) for development
 
 ### npm Commands
 
 - `npm install` - install the required packages for the project
-- `npm run build` - updates the [bundle.js](./dist/bundle.js) to use the latest versions of the [renumberReferences.js](./lib/renumberReferences.js), [renumberTextarea.js](./lib/renumberTextarea.js), and [config.js](./lib/config.js) files. [index.html](./index.html) is also updated because it uses [bundle.js](./dist/bundle.js)
+- `npm run build` - updates [bundle.js](./dist/bundle.js) to use the latest versions of the [renumberReferences.js](./lib/renumberReferences.js), [renumberTextarea.js](./lib/renumberTextarea.js), and [config.js](./lib/config.js) files. [index.html](./index.html) will use the updated version of [bundle.js](./dist/bundle.js)
 - `npm test` - run the tests for the project with Jest
