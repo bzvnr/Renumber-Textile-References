@@ -53,7 +53,7 @@ This project was developed using different [terminology](https://textile-lang.co
 ### Project vs. Textile
 
 | Appearance in text | Project | Textile |
-|:------------------:| ------- | ------- |
+|:------------------:|:-------:|:-------:|
 | [1] | In-text citation / Citation | Reference |
 | fn1. Author - "Sample Text":https://www.example.com | Reference | Footnote |
 
