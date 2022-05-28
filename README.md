@@ -4,11 +4,21 @@
   <a href="https://bzvnr.github.io/Renumber-Textile-References/">View in action with GitHub Pages</a>
 </div
 
-Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text. This project solves a problem with the Textile markup language where altering the reference order or inserting a new reference in a body of text can result in the user having to renumber the references manually.
+## Introduction
 
-Textile already provides a solution for this problem by allowing users to use [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes) instead of [explicitly numbered references](https://textile-lang.com/doc/footnotes). This project is suited for Textile documents with explicitly numbered references or where auto-numbered notes are not supported.
+Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text. This project solves a problem with the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)) markup language where altering the reference order or inserting a new reference in a body of text may result in the user having to renumber the references manually.
 
-## Use Example 
+Textile already provides a solution for this problem by allowing users to use [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes) instead of [explicitly numbered references](https://textile-lang.com/doc/footnotes). Renumber Textile References is suited for documents that use Textile with explicitly numbered references or where auto-numbered notes are not supported.
+
+This project was designed to target a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to view the program in action on a webpage](https://bzvnr.github.io/Renumber-Textile-References/). 
+
+## Features
+
+- Automatically renumber explicitly numbered references by their order of appearance in text
+- Error detection that highlights user formatting errors to prevent incorrect usage
+- References can be placed almost anywhere in text and be placed in the [ReferenceSection]("./configuration") (for limits, see [Limitations](./#limitations))
+
+## Example 
 
 | Before | After |
 | ------ | ----- |
