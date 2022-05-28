@@ -21,7 +21,7 @@ Automatically renumber [explicitly numbered references](https://textile-lang.com
 
 ## Introduction
 
-This project is currently designed for a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here for live version of project on a provided webpage](https://bzvnr.github.io/Renumber-Textile-References/).
+This project is currently designed for a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here for a live webpage using the project's functions](https://bzvnr.github.io/Renumber-Textile-References/).
 
 ## Example 
 
