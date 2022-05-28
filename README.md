@@ -26,24 +26,20 @@ This project was designed to target a [<textarea>](https://developer.mozilla.org
 
 ## Terminology
 
-This project uses different [terminology](https://textile-lang.com/doc/footnotes) than the Textile markup language, as seen below.
+This project uses different [terminology](https://textile-lang.com/doc/footnotes) than the Textile markup language, as seen below. The terminology used in this project may be subject to future change.
 
-| Appearance in text | Textile | Project |
-|:------------------:| ------- | ---- |
-| [1] | Reference | In-text citation |
-| fn1. Author - "Sample Text":https://www.example.com | Footnote | Reference |
+### Project vs. Textile
 
-## Use Instructions
+| Appearance in text | Project | Textile |
+|:------------------:| ------- | ------- |
+| [1] | In-text citation | Reference |
+| fn1. Author - "Sample Text":https://www.example.com | Reference | Footnote |
 
-The script can be used without downloading via [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). See [Configuration](./#configuration) for customization details.
+### Project-Specific
 
-## Configuration
+- *referenceSection* - specified in [config.js](./lib/config.js), a part of the text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in the text. The program places all references under the *referenceSection* after it is finished renumbering them. As seen in [the example], *referenceSection's* default value is `h2. External References`, but this can be changed by following the [ReferenceSection Instructions](./#referencesection-instructions). All references are placed under the *referenceSection*, regardless of where they are located in the <textarea>. Note that with the current implementation, any text after the *referenceSection* will be lost.
+- [config.js](./lib/config.js) - a file used to customize the program to the user's needs
 
-This project is currently configured as such:
-
-* *referenceSection* - specified in `config.js`, a part of the text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in the text. The program places all references under the *referenceSection* after it is finished renumbering them. By default, *referenceSection*'s value is `h2. External References`, but it can be customized by following the [ReferenceSection Instructions](./#referencesection-instructions)
-* It was designed to serve a single [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on an HTML page
-* All references are placed under the *referenceSection*, regardless of where they are located in the <textarea>
 
 ## Use Instructions
 
