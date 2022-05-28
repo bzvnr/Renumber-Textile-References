@@ -4,7 +4,7 @@
 
 <h1 align="center">Renumber-Textile-References</h1>
 
-Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text.
+Automatically renumber [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile markup language](https://en.wikipedia.org/wiki/Textile_(markup_language)) by order of their appearance in text.
 
 ## Table of Contents
 
@@ -35,7 +35,7 @@ This project is currently designed for a [<textarea>](https://developer.mozilla.
 
 ## Rationale
 
-This project solves a problem with [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)) markup language. When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project does that automatically.
+This project solves a problem with [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)). When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project does that automatically.
 
 Note that Textile already provides a solution to this with [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes).
 
