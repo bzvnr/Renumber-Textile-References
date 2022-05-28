@@ -62,7 +62,6 @@ This project was developed using different [terminology](https://textile-lang.co
   - As seen in the [example](#example), *referenceSection's* default value is `h2. External References`. This an be changed by following the [Configuration Instructions](#configuration)
   - All references are placed under the *referenceSection*, regardless of where they are in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference will be lost
 
-
 ## Use Instructions
 
 A live version of project can be used with [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). The project can also be used offline by downloading it or cloning it from GitHub.
@@ -91,7 +90,7 @@ This part assumes the project has been [downloaded](#installation) or cloned. Th
 - Save [config.js](./lib/config.js) to preserve any changes made
 - See steps 3-6 from the [Installation](#installation) section for instructions on opening the system's terminal, navigating to the project directory, and downloading npm packages
 - In terminal, enter the command `npm run build`. This updates the [bundle.js](./dist/bundle.js) file, allowing the [webpage](./index.html) to use the updated values from [config.js](./lib/config.js)
-- Open `index.html` in any browser. The webpage should use the provided values in [config.js](./lib/config.js) with the [system](./lib/renumberReferences.js) [files](./lib/renumberTextarea.js) to update any provided text
+- Open `index.html` in any browser. The webpage should use the provided values in [config.js](./lib/config.js) with the project files to update any provided text
 
 ## Limitations
 
