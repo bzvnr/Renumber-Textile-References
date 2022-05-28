@@ -77,7 +77,7 @@ To use this project locally, Node.js and npm must be installed. See [installatio
 2. Unzip the file (AKA Extract all)
 3. [Open your system's terminal](https://web.archive.org/web/20220528160004/https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955?gi=f465d80a5ddf)
 4. In the terminal, navigate to the project's directory (folder)
-5. In the terminal, enter `cd [filePathToProjectDirectory]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder.
+5. In the terminal, enter `cd [filePathToProjectDirectory]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder
 6. In the terminal, enter `npm install` to download the npm packages required for the project
 
 The [webpage](./index.html) for the project should work locally.
