@@ -19,7 +19,7 @@ Automatically renumber [explicitly numbered references in Textile](https://texti
 
 ## Introduction
 
-This project is currently designed for a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to use the project on a provided webpage](https://bzvnr.github.io/Renumber-Textile-References/).
+This project is currently designed for a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here for live version of project on a provided webpage](https://bzvnr.github.io/Renumber-Textile-References/).
 
 ## Example 
 
@@ -29,7 +29,7 @@ This project is currently designed for a [<textarea>](https://developer.mozilla.
 
 ## Features
 
-- Automatically renumber explicitly numbered Textile references by their order of appearance in text
+- Automatically renumber [explicitly numbered](https://textile-lang.com/doc/footnotes) Textile references by their order of appearance in text
 - User formatting errors are detected and highlighted to prevent incorrect usage
 - References can be placed almost anywhere in text (for limits, see [Limitations](#bugs))
 
@@ -37,11 +37,11 @@ This project is currently designed for a [<textarea>](https://developer.mozilla.
 
 This project solves a problem with [explicitly numbered references](https://textile-lang.com/doc/footnotes) in the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)) markup language. When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project does that automatically.
 
-Note that Textile already provides a solution with [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes).
+Note that Textile already provides a solution to this with [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes).
 
 This project is suited for: 
 
-- Anyone using Textile who has text already containing explicitly numbered references
+- Anyone using Textile who has text already containing [explicitly numbered references](https://textile-lang.com/doc/footnotes)
 - Websites where auto-numbered notes are not supported
 
 ## Terminology
@@ -58,28 +58,27 @@ This project was developed using different [terminology](https://textile-lang.co
 ### Project-Specific
 
 - [config.js](./lib/config.js) - a configuration file used to customize the project to the user's needs
-- *referenceSection* - specified in [config.js](./lib/config.js), a part of a text assumed to be the last [heading](https://textile-lang.com/doc/headings) or a unique last section in a text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them
-  - As seen in the [example](#example), *referenceSection's* default value is `h2. External References`. This an be changed by following the [Configuration Instructions](#configuration)
-  - All references are placed under the *referenceSection*, regardless of where they are in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference will be lost
+- *referenceSection* - a variable in [config.js](./lib/config.js), a part of a text assumed to be the last [heading](https://textile-lang.com/doc/headings) / a unique last section in a text. The [program](./lib/renumberReferences.js) places all references under the *referenceSection* after it is finished renumbering them
+  - As seen in the [example](#example), *referenceSection's* default value is `h2. External References`. This can be changed by following the [configuration instructions](#configuration)
+  - All references are placed under the *referenceSection*, regardless of where they are in the <textarea> (for limits see[limitations](#bugs)). Note that with the current implementation, any text after the *referenceSection* that is not a reference may be lost
 
 ## Use Instructions
 
-A live version of project can be used with [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). The project can also be used offline by downloading it or cloning it from GitHub.
+A live version of project can be used with [GitHub Pages](https://bzvnr.github.io/Renumber-Textile-References/). The project can also be used offline by downloading or cloning it from GitHub.
 
 ### Requirements
 
-To use this project locally, Node.js and npm must be installed. See [installation instructions for Node.js for details](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). A short video on how to install can also be viewed [here](https://youtu.be/OBhw2BOez0w?t=82).
+To use this project locally, Node.js and npm must be installed. See [installation instructions for Node.js for details](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). A short video on how to install Node.js can also be viewed [here](https://youtu.be/OBhw2BOez0w?t=82).
 
 ### Installation
 
 1. Click the green `Code` button [on the project's GitHub repository](https://github.com/bzvnr/Renumber-Textile-References) and download the project as a ZIP file
-2. Unzip the file (AKA Extract all)
+2. Unzip the file
 3. [Open your system's terminal](https://web.archive.org/web/20220528160004/https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955?gi=f465d80a5ddf)
-4. In the terminal, navigate to the project's directory (folder)
-5. In the terminal, enter `cd [filePathToProjectDirectory]` without the brackets. (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder
-6. In the terminal, enter `npm install` to download the npm packages required for the project
+4. In the terminal, navigate to the project's directory (folder). [If you are unfamiliar with terminal navigation, simply enter `cd [filePathToProjectDirectory]` without the brackets in the terminal (ex: `cd C:\Users\user\Downloads\Renumber-Textile-References-master\Renumber-Textile-References-master`). The directory navigated to should contain the project's `lib` folder.]
+5. In the terminal, enter `npm install` to download the npm packages required for the project
 
-The [webpage](./index.html) for the project should work locally.
+The [webpage](./index.html) for the project opened in most browsers should work locally after these instructions.
 
 ### Configuration
 
@@ -88,21 +87,26 @@ This part assumes the project has been [downloaded](#installation) or cloned. Th
 - Locate the [config.js](./lib/config.js) file on your system
 - Open [config.js](./lib/config.js) and update the variable values to the desired values (ex: referenceSection: "changeTheValueInQuotes").
 - Save [config.js](./lib/config.js) to preserve any changes made
-- See steps 3-6 from the [Installation](#installation) section for instructions on opening the system's terminal, navigating to the project directory, and downloading npm packages
-- In terminal, enter the command `npm run build`. This updates the [bundle.js](./dist/bundle.js) file, allowing the [webpage](./index.html) to use the updated values from [config.js](./lib/config.js)
+- See steps 3-5 from the [Installation](#installation) section for instructions on opening the system's terminal, navigating to the project directory, and downloading npm packages
+- In terminal, enter the command `npm run build` (if interested, see [npm commands](#npm-commands) for how this works)
 - Open `index.html` in any browser. The webpage should use the provided values in [config.js](./lib/config.js) with the project files to update any provided text
 
 ## Limitations
 
 (Using Textile terminology): The project currently does not support [references that don't link to the footnote or footnotes with a backlink](https://textile-lang.com/doc/footnotes).
 
+Compatibility with Internet Explorer is untested.
+
 ### Bugs 
 
-To view inputs that currently cause errors, open [testCases.yaml](./lib/testCases.yaml) and search for "Failing" without quotes.
+To view inputs known to cause errors, open [testCases.yaml](./lib/testCases.yaml) and search for "Failing" without quotes.
 
 ## Technologies
 
-- [Node.js and npm](https://nodejs.org/en/download/) for development and package management
+Technologies used for this project include:
+
+- [Node.js](https://nodejs.org/en/download/) as a runtime environment
+- [npm](https://npmjs.com) for package management 
 - [Jest](https://jestjs.io/) for testing
 - [webpack](https://github.com/webpack/webpack) for bundling
 - [Visual Studio Code](https://code.visualstudio.com/) for creation and editing
@@ -110,5 +114,5 @@ To view inputs that currently cause errors, open [testCases.yaml](./lib/testCase
 ### npm Commands
 
 - `npm install` - install the required packages for the project
-- `npm run build` - create [bundle.js](./dist/bundle.js) for [index.html](./index.html) to use
+- `npm run build` - updates the [bundle.js](./dist/bundle.js) to use the latest versions of the [renumberReferences.js](./lib/renumberReferences.js), [renumberTextarea.js](./lib/renumberTextarea.js), and [config.js](./lib/config.js) files. [index.html](./index.html) is also updated because it uses [bundle.js](./dist/bundle.js)
 - `npm test` - run the tests for the project with Jest
