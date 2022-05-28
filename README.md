@@ -2,15 +2,24 @@
 
 <div align="center">
   <a href="https://bzvnr.github.io/Renumber-Textile-References/">View in action with GitHub Pages</a>
-</div
+</div>
 
 ## Introduction
 
-Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text. This project solves a problem with the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)) markup language where altering the reference order or inserting a new reference in a body of text may result in the user having to renumber the references manually.
+Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text.
 
-Textile already provides a solution for this problem by allowing users to use [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes) instead of [explicitly numbered references](https://textile-lang.com/doc/footnotes). Renumber Textile References is suited for documents that use Textile with explicitly numbered references or where auto-numbered notes are not supported.
+This project is currently designed to target a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to view the program in action on a webpage](https://bzvnr.github.io/Renumber-Textile-References/).
 
-This project was designed to target a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to view the program in action on a webpage](https://bzvnr.github.io/Renumber-Textile-References/). 
+## Rationale
+
+This project solves a problem with explicitly numbered references in the [Textile](https://en.wikipedia.org/wiki/Textile_(markup_language)) markup language. When a user alters the reference order or inserts a new reference in a body of text, the references' order by appearance may be compromised. To preserve the references' order by appearance, a user may have to renumber the references manually. This project solves that problem by doing that automatically.
+
+Note that Textile already provides [auto-numbered notes](https://textile-lang.com/doc/auto-numbered-notes) as an alternative solution.
+
+This project is suited for: 
+
+- Anyone using Textile who has text already containing explicitly numbered references
+- Websites where auto-numbered notes are not supported
 
 ## Features
 
