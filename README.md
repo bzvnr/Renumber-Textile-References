@@ -1,12 +1,23 @@
-<h1 align="center">Renumber-Textile-References</h1>
-
 <div align="center">
   <a href="https://bzvnr.github.io/Renumber-Textile-References/">View in action with GitHub Pages</a>
 </div>
 
-## Introduction
+<h1 align="center">Renumber-Textile-References</h1>
 
 Automatically renumber [explicitly numbered references in Textile](https://textile-lang.com/doc/footnotes) by order of their appearance in text.
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Rationale](#rationale)
+3. [Features](#features)
+4. [Example](#example)
+5. [Terminology](#terminology)
+6. [Use Instructions](#use-instructions)
+7. [Limitations](#limitations)
+8. [Technologies](#technologies)
+
+## Introduction
 
 This project is currently designed to target a [<textarea>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) on a webpage. [Click here to use the project on a provided webpage](https://bzvnr.github.io/Renumber-Textile-References/).
 
@@ -89,7 +100,7 @@ This part assumes you [downloaded](./#installation) or cloned the project. To up
 
 To view inputs that currently cause errors, open [testCases](./lib/testCases.yaml) in the project and search for "Failing".
 
-## Development
+## Technologies
 
 This project was built using [Node.js and npm](https://nodejs.org/en/download/), tested using [Jest](https://jestjs.io/), bundled with [webpack](https://github.com/webpack/webpack), and created with [Visual Studio Code](https://code.visualstudio.com/).
 
