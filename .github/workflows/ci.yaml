@@ -4,12 +4,12 @@ name: Jest Unit Tests
 on:
   [pull_request, push]:
     paths-ignore:
-    - 'dist/**'
-    - '.editorconfig'
-    - '.gitignore'
-    - 'index.html'
-    - 'LICENSE'
-    - 'README.md'
+      - 'dist/**'
+      - '.editorconfig'
+      - '.gitignore'
+      - 'index.html'
+      - 'LICENSE'
+      - 'README.md'
 
 jobs:
   tests:
@@ -20,7 +20,8 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
       - name: 'Use Node.js ${{ matrix.node-version }}'
         uses: actions/setup-node@v3
         with:
