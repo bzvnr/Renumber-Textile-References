@@ -10,14 +10,6 @@ on:
       - 'index.html'
       - 'LICENSE'
       - 'README.md'
-  push:
-    paths-ignore:
-      - 'dist/**'
-      - '.editorconfig'
-      - '.gitignore'
-      - 'index.html'
-      - 'LICENSE'
-      - 'README.md'
 
 jobs:
   tests:
