@@ -1,14 +1,15 @@
 # setup and use a GitHub runner to run unit tests
 name: Jest Unit Tests
 
-on: [pull_request, push]:
-    paths-ignore:
-      - 'dist/**'
-      - '.editorconfig'
-      - '.gitignore'
-      - 'index.html'
-      - 'LICENSE'
-      - 'README.md'
+on: [pull_request, push]
+# :
+#     paths-ignore:
+#       - 'dist/**'
+#       - '.editorconfig'
+#       - '.gitignore'
+#       - 'index.html'
+#       - 'LICENSE'
+#       - 'README.md'
 
 jobs:
   tests:
@@ -19,7 +20,7 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - name: Checkout repo
+      - name: Checkout Repository
         uses: actions/checkout@v3
       - name: 'Use Node.js ${{ matrix.node-version }}'
         uses: actions/setup-node@v3
