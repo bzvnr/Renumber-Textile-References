@@ -1,6 +1,6 @@
 {
   "name": "renumber-textile-references",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "description": "Automatically renumber explicitly numbered Textile references in order of appearance",
   "keywords": [
     "textile",
