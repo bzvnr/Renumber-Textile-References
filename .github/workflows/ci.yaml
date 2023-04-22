@@ -1,10 +1,15 @@
 # setup and use a GitHub runner to run unit tests
-name: Jest Tests
+name: Jest Unit Tests
 
 on:
-  [push]
-  [pull_request]
-  # [merge]
+  [pull_request, push]:
+    paths-ignore:
+    - 'dist/**'
+    - '.editorconfig'
+    - '.gitignore'
+    - 'index.html'
+    - 'LICENSE'
+    - 'README.md'
 
 jobs:
   tests:
@@ -16,7 +21,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: 'Use Node.js ${{ matrix.node-version }}'
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm clean-install
