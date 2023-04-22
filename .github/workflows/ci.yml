@@ -1,7 +1,16 @@
 # setup and use a GitHub runner to run unit tests
 name: Jest Unit Tests
 
-on: [pull_request, push]:
+on:
+  pull_request:
+    paths-ignore:
+      - 'dist/**'
+      - '.editorconfig'
+      - '.gitignore'
+      - 'index.html'
+      - 'LICENSE'
+      - 'README.md'
+  push:
     paths-ignore:
       - 'dist/**'
       - '.editorconfig'
